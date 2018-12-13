@@ -1,321 +1,577 @@
-
-
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Mover</title>
+	<meta charset="utf-8">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/main.css" class="color-switcher-link">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
-  <title>delivery service</title>
-  <meta name="description" content="">
-  <meta name="generator" content="Elly Framework">
-
-  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
 
 </head>
+
 <body>
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
 
-<!-- HEADER start -->
-<header class="" id="header">
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
 
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <p class="navbar-text">Время работы: с 10:00 до 22:00. Без выходных</p>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a>Главная</a></li>
-        <li><a >Акции</a></li>
-        <li><a >Тарифы</a></li>
-        <li><a >О нас</a></li>
-        <li><a>Контакты</a></li>
-      </ul>
-    </div>
-  </nav>
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">
+				<i class="rt-icon2-cross2"></i>
+			</span>
+		</button>
+		<div class="widget widget_search">
+			<form method="get" class="searchform search-form form-inline" action="index.html">
+				<div class="form-group">
+					<input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
+				</div>
+				<button type="submit" class="theme_button">Search</button>
+			</form>
+		</div>
+	</div>
 
-  <div class="container header">
-    <nav class="navbar row" role="navigation">
-      <div class="col-md-6 col-xs-6">
-        <div class="navbar-header">
-          <a class="logo text-center">
-            <img src="http://www.milanexpress.kg/img/logo_milan.png" width="" height="">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-6 hide">
-        <ul class="list-inline pull-right">
-          <li><a>Акции</a></li>
-          <li><a>Тарифы</a></li>
-          <li><a>О нас</a></li>
-          <li><a>Контакты</a></li>
-        </ul>
-      </div>
-      <div class="col-md-6 col-xs-6 header-right">
-        <div class="col-md-5 slogan">Служба курьерской доставки</div>
-        <div class="col-md-7 phone">
-          <span>0 773 22 66 66</span>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <div class="header-search bg-default">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 hidden-sm hidden-xs">
-          <div class="navbar-header">
-            <a  class="logo-txt text-center">
-              <img src="http://www.milanexpress.kg/img/logo_milan.png" width="" height="">
-            </a>
-          </div>
-        </div>
-        <form method="post" action="/category/find">
-          <div class="col-md-4 col-sm-6 col-xs-6">
-            <div class="form-group has-feedback">
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls with_padding">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+		-->
 
+		</div>
+	</div>
+	<!-- eof .modal -->
 
-              <div class="container">
-                <div id="mainCarousel" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#mainCarousel" data-slide-to="1"></li>
-                    <li data-target="#mainCarousel" data-slide-to="2"></li>
-                  </ol>
+	<!-- wrappers for visual page editor and boxed version of template -->
+	<div id="canvas">
+		<div id="box_wrapper">
 
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner">
+			<section class="page_topline with_search ls ms table_section">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 text-center text-sm-left">
+							<p>Call us now: +996 123 456 789</p>
+						</div>
+						<div class="col-sm-6 text-center text-sm-right">
+							<div class="inline-content">
+					</p>
+								<a href="admin_signin.html" type="submit" class="theme_button color1 no_bg_button">Sign In</a>
+										</div>
+									</form>
+								</div>
+							</div>
 
-                  </div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-                  <!-- Left and right controls -->
-                  <a class="left carousel-control" href="#mainCarousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="right carousel-control" href="#mainCarousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
+			<header class="page_header header_white toggler_right">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 display_table">
+							<div class="header_left_logo display_table_cell">
+								<h1 style="margin-top:3px;margin-bottom:-8px;"> Swift Delivery</h1>
+							</div>
 
+							<div class="header_mainmenu display_table_cell text-right">
+								<!-- main nav start -->
+								<nav class="mainmenu_wrapper">
+									<ul class="mainmenu nav sf-menu">
+										<li class="active">
+											<a href="index.html">Home</a>
+											<ul>
+												<li>
+													<a href="index.html">MultiPage</a>
+												</li>
+												<li>
+													<a href="index_static.html">Static Intro</a>
+												</li>
+												<li>
+													<a href="index_singlepage.html">Single Page</a>
+												</li>
+												<li>
+													<a href="admin_index.html">Admin Dashboard</a>
+												</li>
+											</ul>
+										</li>
 
-                <h2 class="text-center">Выберите категорию</h2>
-                <div class="row menu-main"
-              <input type="text" name="find" class="form-control input-lg" placeholder="Что ищем?">
-              <span class="glyphicon glyphicon-search form-control-feedback"></span>
-            </div>
-          </div>
-          <div class="col-md-3 col-xs-4 col-md-offset-2 col-xs-offset-2">
-            <a class="btn btn-primary btn-lg btn-block hidden-sm hidden-xs">Вызвать курьера</a>
-            <a class="btn btn-primary btn-lg btn-block visible-sm-block visible-xs-block">Курьер</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</header>
-<!-- HEADER end -->
->
-    <div class="col-sm-4">
-      <a>
-        <img src="http://www.milanexpress.kg/img/menu-restaurants.png" alt="" />
-        <p>Все рестораны</p>
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a>
-        <img src="http://www.milanexpress.kg/img/menu-sushi.png" alt="" />
-        <p>Суши</p>
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a>
-        <img src="http://www.milanexpress.kg/img/menu-pizza.png" alt="" />
-        <p>Пицца</p>
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a>
-        <img src="http://www.milanexpress.kg/img/menu-shashlik.png" alt="" />
-        <p>Шашлыки</p>
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a>
-        <img src="http://www.milanexpress.kg/img/menu-desert.png" alt="" />
-        <p>Национальная кухня</p>
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a>
-        <img src="http://www.milanexpress.kg/img/menu-burger.png" alt="" />
-        <p>Бургеры</p>
-      </a>
-    </div>
-  </div>
+										<li>
+											<a href="about.html">About Us</a>
+										</li>
+											<!-- eof pages -->
 
-</div>
+										<li>
+											<a href="index.html#">Features</a>
+											<div class="mega-menu">
+												<ul class="mega-menu-row">
+													<li class="mega-menu-col">
+														<a href="index.html#">Headers</a>
+														<ul>
+															<li>
+																<a href="header1.html">Header Type 1</a>
+															</li>
+															<li>
+																<a href="header2.html">Header Type 2</a>
+															</li>
+															<li>
+																<a href="header3.html">Header Type 3</a>
+															</li>
+															<li>
+																<a href="header4.html">Header Type 4</a>
+															</li>
+															<li>
+																<a href="header5.html">Header Type 5</a>
+															</li>
+														</ul>
+													</li>
+													<li class="mega-menu-col">
+														<a href="index.html#">Side Menus</a>
+														<ul>
+															<li>
+																<a href="header_side1.html">Slide Left Light</a>
+															</li>
+															<li>
+																<a href="header_side2.html">Slide Right Light</a>
+															</li>
+															<li>
+																<a href="header_side3.html">Push Left Light</a>
+															</li>
+															<li>
+																<a href="header_side4.html">Push Right Light</a>
+															</li>
+															<li>
+																<a href="header_side5.html">Slide Left Dark</a>
+															</li>
+															<li>
+																<a href="header_side6.html">Slide Right Dark</a>
+															</li>
+															<li>
+																<a href="header_side7.html">Push Left Dark</a>
+															</li>
+															<li>
+																<a href="header_side8.html">Push Right Dark</a>
+															</li>
+															<li>
+																<a href="header_side_superfish.html">Superfish Menu</a>
+															</li>
+															<li>
+																<a href="header_side_sticked.html">Sticked Menu</a>
+															</li>
+														</ul>
+													</li>
+													<li class="mega-menu-col">
+														<a href="breadcrumbs1.html">Breadcrumbs</a>
+														<ul>
+															<li>
+																<a href="breadcrumbs1.html">Breadcrumbs 1</a>
+															</li>
+															<li>
+																<a href="breadcrumbs2.html">Breadcrumbs 2</a>
+															</li>
+															<li>
+																<a href="breadcrumbs3.html">Breadcrumbs 3</a>
+															</li>
+															<li>
+																<a href="breadcrumbs4.html">Breadcrumbs 4</a>
+															</li>
+															<li>
+																<a href="breadcrumbs5.html">Breadcrumbs 5</a>
+															</li>
+															<li>
+																<a href="breadcrumbs6.html">Breadcrumbs 6</a>
+															</li>
+														</ul>
+													</li>
+													<li class="mega-menu-col">
+														<a href="footer1.html">Footers</a>
+														<ul>
+															<li>
+																<a href="footer1.html">Footer Type 1</a>
+															</li>
+															<li>
+																<a href="footer2.html">Footer Type 2</a>
+															</li>
+															<li>
+																<a href="footer3.html">Footer Type 3</a>
+															</li>
+															<li>
+																<a href="footer4.html">Footer Type 4</a>
+															</li>
+															<li>
+																<a href="footer5.html">Footer Type 5</a>
+															</li>
+															<li>
+																<a href="footer6.html">Footer Type 6</a>
+															</li>
+															<li>
+																<a href="footer7.html">Footer Type 7</a>
+															</li>
+														</ul>
+													</li>
+													<li class="mega-menu-col">
+														<a href="copyright1.html">Copyrights</a>
 
-<div class="step3">
-  <div class="container text-center">
-    <h2>Инструкция</h2>
-    <div class="step3-img"></div>
-    <div class="row">
-      <div class="col-sm-4">
-        <strong>Выберите лучший ресторан</strong>
-        <p>Подбираете подходящий по ассортименту и ценам ресторан</p>
-      </div>
-      <div class="col-sm-4">
-        <strong>Ознакомьтесь с меню</strong>
-        <p>Делаете заказ еды по меню этого заведения</p>
-      </div>
-      <div class="col-sm-4">
-        <strong>Оформите online-заказ</strong>
-        <p>Получаете оперативную доставку в сроки, указанные на сайте для каждого конкретного ресторана</p>
-      </div>
-    </div>
-  </div>
-</div>
+														<ul>
+															<li>
+																<a href="copyright1.html">Copyrights 1</a>
+															</li>
+															<li>
+																<a href="copyright2.html">Copyrights 2</a>
+															</li>
+															<li>
+																<a href="copyright3.html">Copyrights 3</a>
+															</li>
+															<li>
+																<a href="copyright4.html">Copyrights 4</a>
+															</li>
+															<li>
+																<a href="copyright5.html">Copyrights 5</a>
+															</li>
+														</ul>
+													</li>
 
-<div class="akcii bg-info">
-  <div class="container">
-    <h2 class="text-center">Акции прямо сейчас</h2>
-
-    <div id="actionCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-
-      </div>
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#actionCarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#actionCarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<div class="container box-padding">
-  <h2 class="text-center">3 причины полюбить нас</h2>
-
-  <div class="row text-center">
-    <div class="col-sm-4">
-      <h1><i class="glyphicon glyphicon-star-empty"></i></h1>
-      <h4>Пицца и только?</h4>
-      <p>С нами вы узнаете, что рядом с вашим домом куча клевых мест с вкусной едой</p>
-    </div>
-    <div class="col-sm-4">
-      <h1><i class="glyphicon glyphicon-star-empty"></i></h1>
-      <h4>Никаких звонков</h4>
-      <p>Вам больше не придется диктовать свою улицу и номер телефона по несколько раз</p>
-    </div>
-    <div class="col-sm-4">
-      <h1><i class="glyphicon glyphicon-star-empty"></i></h1>
-      <h4>Выгоднее чем напрямую</h4>
-      <p>С нами вы узнаете, что рядом с вашим домом куча клевых мест с вкусной едой</p>
-    </div>
-  </div>
-</div>
-
-<div class="box-padding bg-default hide">
-  <div class="container">
-    <img src="http://www.milanexpress.kg/img/mobile-app.png" class="pull-right" width="403" height="331">
-    <h1>Заказывать через приложение<br />еще проще!</h1>
-    <br />
-    <p>3000+ ресторанов у вас в кармане. Скачивайте бесплатно.</p>
-    <h4>700 бонусных баллов уже у вас на счету.</h4>
-    <br />
-    <br />
-    <a class="btn btn-primary btn-lg" ><i class="fa fa-apple"></i> Загрузите в <b>App Store</b></a>
-    <a class="btn btn-primary btn-lg" ><i class="fa fa-android"></i> Загрузите в <b>Google Play</b></a>
-  </div>
-</div>
-
-
-<div class="box-padding container">
-  <h4 class="MsoNormal">
-    <span>Milan</span><span> </span><span>Express</span>: Доставка еды на дом!
-  </h4>
-  <p class="MsoNormal">
-    Любые блюда из лучших кафе и ресторанов города прямо у васдома, вы можете заказать еду с <span>Milan</span><span> </span><span>Express</span>!Это удобно и просто, всего три простых шага:<span></span>подбираете подходящий по ассортименту и ценам ресторан;делаете заказ еды по меню этого заведения;получаете оперативную доставку в сроки, указанные на сайтедля каждого конкретного ресторана. Возможна и круглосуточная доставка!Мы сотрудничаем со многими заведениями города, поэтому высможете найти оптимальный вариант непосредственно в вашем районе, чтобыдоставка еды заняла минимум времени.
-  </p>
-  <p class="MsoNormal">
-    <br />
-  </p>
-  <h4 class="MsoNormal">
-    Доставка еды из ресторанов: Почему это выгодно?
-  </h4>
-  <p class="MsoNormal">
-    Наш сервис предлагает специальные программы для постоянныхклиентов, а также непрерывно отслеживает различные акции и скидки. Потому высможете ловить самые выгодные предложения! Мы работаем с душой и даем людям нетолько возможность заказать еду, но и получить положительные эмоции. Готовьтесьполучать сюрпризы, подарки и приятные мелочи, которые сделают работу с сайтомвеселым приключением! <span>Milan</span><span> </span><span>Express</span> ждет ваших заказов!
-  </p>
-  <h4>
-    <br />
-  </h4>
-  <h4>
-    Кто мы такие
-  </h4>
-  <p>
-    Milanexpress.kg - это удобный сервис по заказу еды из кафе и ресторанов и продуктов на дом. Мы верим, что процесс заказа еды должен быть легким, быстрым и доставлять удовольствие.С помощью Milanexpress.kg вы получаете доступ к меню сотен кафе и ресторанов, а также можете ознакомиться с их рейтингом и специальными предложениями. Наша миссия - это экономить Ваши деньги и время.
-  </p>
-  <p>
-    В чем наши преимущества?
-  </p>
-  <ul>
-    <li>
-      <u>Выгода</u>. Мы предоставляем самую полную информацию об акциях и скидках всех кафе и ресторанов.
-    </li>
-    <li>
-      <u>Сервис</u>. Мы всегда подскажем самые выгодные предложения и поможем разобраться с ними.
-    </li>
-    <li>
-      <u>Выбор</u>. Мы предоставляем самый большой и полный перечень всех кафе и ресторанов. Мы подбираем кафе и рестораны, отвечающие именно вашим требованиям.
-    </li>
-    <li>
-      <u>Удобство</u>. Вы можете оформить заказ любым удобным для Вас способом, через портал, мобильные приложения или просто позвонив по телефону.
-    </li>
-    <li>
-      <u>Скорость</u>. Процесс заказа еды в КР никогда не был столь быстрым. Спустя несколько секунд после оформления ваш заказ поступает на кухню кафе и ресторана.
-    </li>
-    <li>
-      <u>Уверенность</u>. Объективный рейтинг портала Milanexpress.kg помогает Вам сделать правильный выбор и, как следствие, заказать вкусную еду.
-    </li>
-    <li>
-      <u>Настроение</u>. В нашей компании работают только счастливые люди и мы всегда делим свое счастье с нашими пользователями.
-    </li>
-    <li>
-      <u>Эмоции</u>. Пользуясь нашим порталом, вы всегда будете находить приятные сюрпризы.
-    </li>
-    <li>
-      <u>Подарки</u>. У нас вы можете легко получить бонусные баллы, которые можно потратить на сувениры либо оплатить ими какое-нибудь аппетитное блюдо.
-    </li>
-  </ul>
-  <p>
-    Преимущества партнерства
-  </p>
-  <p>
-    Подключение к нашему порталу абсолютно бесплатное и займет минимум вашего времени.Сотрудничая с нами, вы получаете новых клиентов.Вы всегда видите отзывы ваших клиентов и можете отвечать на них, корректно построив свою работу.Ваше заведение представлено на платформах iOS и Android.В личном кабинете вы можете посмотреть статистику по среднему чеку, количеству заказов и просмотру вашего меню.Закончились продукты? Поставьте это блюдо в стоп-лист всего одним кликом!Акция или скидка не останется без внимания, благодаря удобной системе оповещения о заказе.
-  </p>
-</div>
+												</ul>
+											</div>
+											<!-- eof mega menu -->
+										</li>
+										<!-- eof features -->
 
 
-<div class="box-cart hide">
-  <a class="pull-right up" href="#header"><i class="fa fa-arrow-up"></i> Вверх</a>
-  <div class="container">
-    <a class="col-md-3 cart-title"><i class="fa fa-shopping-cart"></i> Корзина</a>
-    <div class="col-md-7 cart-info">
-      <span>Блюд в корзине: <span class="cart-count">0</span></span>
-      <span>На сумму: <span class="cart-summa">0</span></span>
-    </div>
-    <a class="btn btn-primary pull-right">Оформить заказ</a>
-  </div>
-</div>
+										<!-- gallery -->
+										<li>
+											<a href="faq2.html">FAQ</a>
+										</li>
+										<!-- eof Gallery -->
+
+										<!-- blog -->
+										<li>
+											<a href="blog-right.html">Blog</a>
+											<ul>
+
+												<li>
+													<a href="blog-right.html">Right Sidebar</a>
+												</li>
+												<li>
+													<a href="blog-left.html">Left Sidebar</a>
+												</li>
+												<li>
+													<a href="blog-full.html">No Sidebar</a>
+												</li>
+												<li>
+													<a href="blog-mosaic.html">Blog Grid</a>
+												</li>
+
+												<li>
+													<a href="blog-single-right.html">Post</a>
+													<ul>
+														<li>
+															<a href="blog-single-right.html">Right Sidebar</a>
+														</li>
+														<li>
+															<a href="blog-single-left.html">Left Sidebar</a>
+														</li>
+														<li>
+															<a href="blog-single-full.html">No Sidebar</a>
+														</li>
+													</ul>
+												</li>
+
+												<li>
+													<a href="blog-single-video-right.html">Video Post</a>
+													<ul>
+														<li>
+															<a href="blog-single-video-right.html">Right Sidebar</a>
+														</li>
+														<li>
+															<a href="blog-single-video-left.html">Left Sidebar</a>
+														</li>
+														<li>
+															<a href="blog-single-video-full.html">No Sidebar</a>
+														</li>
+													</ul>
+												</li>
+
+											</ul>
+										</li>
+										<!-- eof blog -->
+
+										<!-- contacts -->
+										<li>
+											<a href="contact.html">Contacts</a>
+										</li>
+										<!-- eof contacts -->
+									</ul>
+								</nav>
+								<!-- eof main nav -->
+								<!-- header toggler -->
+								<span class="toggle_menu">
+									<span></span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<section class="ds section_padding_top_15 section_padding_bottom_15 section_bottom_overlap table_section table_section_sm">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-8">
+							<div class="inline-content">
+								<div class="media small-teaser teaser fontsize_14">
+									<div class="media-left media-middle">
+										<div class="teaser_icon border_icon big_bg highlight round size_xsmall">
+											<i class="fa fa-phone grey"></i>
+										</div>
+									</div>
+									<div class="media-body media-middle">
+										<span class="medium grey">Call 24/7: +996 123 456 789</span>
+										<br>
+										<span class="lightgrey">Bishkek Kyrgyzstan</span>
+									</div>
+								</div>
+								<div class="media small-teaser teaser fontsize_14">
+									<div class="media-left media-middle">
+										<div class="teaser_icon border_icon big_bg highlight round size_xsmall">
+											<i class="fa fa-clock-o grey"></i>
+										</div>
+									</div>
+									<div class="media-body media-middle">
+										<span class="medium grey">Open Hours:</span>
+										<br>
+										<span class="lightgrey">Weekdays 8.00-18.00, Sat: off</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 text-sm-right">
+							<a href="index.html#" class="theme_button margin_0">Order delivery</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="intro_section page_mainslider ls ms">
+				<div class="flexslider" data-nav="false">
+					<ul class="slides">
+
+						<li>
+							<img src="images/slide01.jpg" alt="">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12 text-right">
+										<div class="slide_description_wrapper">
+											<div class="slide_description text-left">
+												<div class="intro-layer" data-animation="fadeInUp">
+													<h3>
+														Find out why we're
+													</h3>
+													<h2>
+														<span class="highlight">#1</span> Moving CO.
+													</h2>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<p class="grey"><span class="bold">Mover Company</span> is a local moving company with experts and professionals, who cater to customer needs with safety, care and love. Call us now: <span class="bold">+996 123 456 789</span></p>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<a href="about.html" class="theme_button color1">About Us</a>
+												</div>
+											</div>
+											<!-- eof .slide_description -->
+										</div>
+										<!-- eof .slide_description_wrapper -->
+									</div>
+									<!-- eof .col-* -->
+								</div>
+								<!-- eof .row -->
+							</div>
+							<!-- eof .container -->
+						</li>
+
+						<li>
+							<img src="images/slide02.jpg" alt="">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="slide_description_wrapper">
+											<div class="slide_description">
+												<div class="intro-layer" data-animation="fadeInUp">
+													<h3>
+														Over
+														<span class="highlight">600</span> Reviews
+													</h3>
+													<h2>
+														Five Stars
+													</h2>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<p class="grey"><span class="bold">Mover Company</span> is a local moving company with experts and professionals, who cater to customer needs with safety, care and love. Call us now: <span class="bold">+996 123 456 789</span></p>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<a href="about.html" class="theme_button color1">About Us</a>
+												</div>
+											</div>
+											<!-- eof .slide_description -->
+										</div>
+										<!-- eof .slide_description_wrapper -->
+									</div>
+									<!-- eof .col-* -->
+								</div>
+								<!-- eof .row -->
+							</div>
+							<!-- eof .container -->
+						</li>
+
+						<li class="ds">
+							<img src="images/slide03.jpg" alt="">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<div class="slide_description_wrapper">
+											<div class="slide_description">
+												<div class="intro-layer" data-animation="fadeInUp">
+													<h3 class="highlight">
+														Commercial &amp; Residential
+													</h3>
+													<h2>
+														Moving Services
+													</h2>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<p class="grey"><span class="bold">Mover Company</span> is a local moving company with experts and professionals, who cater to customer needs with safety, care and love. Call us now: <span class="bold">+996 123 456 789</span></p>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<a href="about.html" class="theme_button color1">About Us</a>
+												</div>
+											</div>
+											<!-- eof .slide_description -->
+										</div>
+										<!-- eof .slide_description_wrapper -->
+									</div>
+									<!-- eof .col-* -->
+								</div>
+								<!-- eof .row -->
+							</div>
+							<!-- eof .container -->
+						</li>
+
+					</ul>
+				</div>
+				<!-- eof flexslider -->
+
+			</section>
+
+			<section id="services" class="ls section_padding_top_150 section_padding_bottom_130">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h4 class="thin margin_0 text-uppercase">Welcome to</h4>
+							<h2 class="section_header">Our Services</h2>
+							<p class="fontsize_20 grey">
+					With professional movers, we provide the following services at affordable rates, to suit your pocket and sooth your mind.
+				</p>
+						</div>
+					</div>
+					<div class="row topmargin_30 columns_margin_bottom_30">
+						<div class="col-md-4 col-sm-6">
+							<div class="teaser text-center">
+								<div class="teaser_icon highlight size_normal">
+									<i class="fa fa-map-marker"></i>
+								</div>
+								<h4 class="text-uppercase weight-black">
+									<a href="service-single.html">Local Moving</a>
+								</h4>
+								<p>We’ll happily transport your household from one location to another.</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="teaser text-center">
+								<div class="teaser_icon highlight size_normal">
+									<i class="fa fa-globe" aria-hidden="true"></i>
+								</div>
+								<h4 class="text-uppercase weight-black">
+									<a href="service-single.html">Long Distance Moving</a>
+								</h4>
+								<p>Mover will make your long distance moving experience stress-free.</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 clear-sm">
+							<div class="teaser text-center">
+								<div class="teaser_icon highlight size_normal">
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+								</div>
+								<h4 class="text-uppercase weight-black">
+									<a href="service-single.html">Moving Kits</a>
+								</h4>
+								<p>We offer several different moving kits so you don’t have to worry about the details.</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 clear-md">
+							<div class="teaser text-center">
+								<div class="teaser_icon highlight size_normal">
+									<i class="fa fa-inbox" aria-hidden="true"></i>
+								</div>
+								<h4 class="text-uppercase weight-black">
+									<a href="service-single.html">Storage Units</a>
+								</h4>
+								<p>Sometimes you just can’t take everything with you when you’re moving.</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 clear-sm">
+							<div class="teaser text-center">
+								<div class="teaser_icon highlight size_normal">
+									<i class="fa fa-gift" aria-hidden="true"></i>
+								</div>
+								<h4 class="text-uppercase weight-black">
+									<a href="service-single.html">Box Delivery</a>
+								</h4>
+								<p>We have all the packing supplies, including boxes, packing tape and bubble wrap.</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="teaser text-center">
+								<div class="teaser_icon highlight size_normal">
+									<i class="fa fa-cubes" aria-hidden="true"></i>
+								</div>
+								<h4 class="text-uppercase weight-black">
+									<a href="service-single.html">Loading / Unloading</a>
+								</h4>
+								<p>We allow our customers to rent the moving truck, and we’ll load and unload.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
 
 
@@ -323,65 +579,208 @@
 
 
 
-<!-- FOOTER start -->
-<footer class="box-padding bg-info footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="social">
-          <a href="#"><i class="fa fa-instagram"></i></a>
-          <a href="#"><i class="fa fa-odnoklassniki"></i></a>
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-vk"></i></a>
-        </div>
-
-        © 2017, Все права защищены ®
-        <br />
-        <ul>
-          <li><a href="#header">Вверх<i></i></a></li>
-        </ul>
-      </div>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <nav role="footer-customer-service">
-          <h4>Полезные ссылки</h4>
-          <ul>
-            <li><a >Акции</a></li>
-            <li><a >Тарифы</a></li>
-            <li><a >О нас</a></li>
-            <li><a >Контакты</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-md-4 col-sm-6 col-xs-12 text-center hidden-sm hidden-xs">
-        <img src="http://www.milanexpress.kg/img/logo_milan.png" height="100" alt="" />
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- FOOTER start -->
-
-<div class="home" style="display: none">
-  <a  title="Вернуться на главную"><i class="fa fa-home"></i></a>
-</div>
-
-<script>
-  $(window).scroll(function() {
-    if($(this).scrollTop() > 150) $('.home').fadeIn();
-    else $('.home').fadeOut();
-  });
-</script>
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112847448-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+			<section id="mission" class="ls ms overflow_hidden half_section section_padding_top_150 section_padding_bottom_150 columns_padding_80">
+				<div class="image_cover image_cover_left">
+					<!-- you can put your image here instead of puting it in column-->
+					<!-- <img src="img/parallax/half_image.jpg" alt=""> -->
+				</divhm
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<img src="images/half_image.jpg" alt="">
+						</div>
+						<!-- .col-* -->
+						<div class="col-md-6">
 
-  gtag('config', 'UA-112847448-1');
-</script>
+							<h4 class="thin margin_0 text-uppercase">check</h4>
+							<h2 class="section_header">Our mission</h2>
+							<p class="fontsize_20 grey bottommargin_30">
+					If you want high quality and professional moving services  look no further.
+				</p>
 
+							<p>
+					1st Choice Movers is a local San Diego moving company that provides professional San Diego moves. We’re a San Diego moving company that serves all San Diego areas. No move is too big or small, we do small, medium and very large moves, and plan the most efficient route to make your move a smooth transition.
+				</p>
+
+							<p class="fontsize_20 grey bottommargin_10">
+					Call us for your upcoming move!
+				</p>
+
+							<p class="highlight fontsize_30 weight-black">+996 123 456 789</p>
+
+						</div>
+						<!-- .col-* -->
+
+
+					</div>
+				</div>
+
+			</section>
+
+
+			<section id="faq" class="ls section_padding_top_150 section_padding_bottom_150">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h4 class="thin margin_0 text-uppercase">FAQ</h4>
+							<h2 class="section_header">Frequently Asked Questions</h2>
+						</div>
+					</div>
+					<div class="row columns_margin_top_60 to_animate" data-animation="fadeInUp">
+						<div class="col-md-4">
+							<div class="teaser with_border big_padding text-center rounded">
+								<div class="teaser_icon main_bg_color big_icon round offset_icon fontsize_20">
+									<i class="fa fa-comments-o" aria-hidden="true"></i>
+								</div>
+								<h4 class="medium">
+									Do you move unique or very rare items?
+								</h4>
+								<p>
+						Yes! We move almost all items. Be sure to let your Gorilla Movers representative know ahead of time in case it requires a third mover or special equipment.
+					</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="teaser with_border big_padding text-center rounded">
+								<div class="teaser_icon main_bg_color big_icon round offset_icon fontsize_20">
+									<i class="fa fa-comments-o" aria-hidden="true"></i>
+								</div>
+								<h4 class="medium">
+									How do you take care of fragile items/antiques?
+								</h4>
+								<p>
+						It’s our mission to move your belongings safely and securely. To ensure your items are moved unharmed, we carefully pad and shrink wrap them.
+					</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="teaser with_border big_padding text-center rounded">
+								<div class="teaser_icon main_bg_color big_icon round offset_icon fontsize_20">
+									<i class="fa fa-comments-o" aria-hidden="true"></i>
+								</div>
+								<h4 class="medium">
+									Can you pack my stuff or does it have to be packed?
+								</h4>
+								<p>
+						We are happy to pack your stuff! Be sure to tell us prior to the move to ensure efficiency. To minimize costs, customers have the option to pack their belongings.
+					</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<footer class="page_footer parallax ds ms section_padding_50 columns_padding_25" id="contact">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-12">
+							<a href="index.html" class="logo top_logo">
+								<img src="images/logo.png" alt="">
+							</a>
+							<p class="topmargin_20">
+					Consetetur sadipscing elitr diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erased diam voluptua aero eos et accusam et justo. Duo dolores etea rebum. clita kasd.
+				</p>
+						</div>
+
+						<div class="col-md-4 col-sm-6">
+							<h4 class="widget-titile">Mail form</h4>
+							<form class="contact-form" method="post" action="index.html">
+
+								<p class="form-group">
+						<label for="footer-name">Full Name <span class="required">*</span></label>
+						<i class="fa fa-user highlight"></i>
+						<input type="text" aria-required="true" size="30" value="" name="name" id="footer-name" class="form-control with_icon" placeholder="Name">
+					</p>
+								<p class="form-group">
+						<label for="footer-email">Email address<span class="required">*</span></label>
+						<i class="fa fa-envelope highlight"></i>
+						<input type="email" aria-required="true" size="30" value="" name="email" id="footer-email" class="form-control with_icon" placeholder="Email Address">
+					</p>
+								<p class="form-group">
+						<label for="footer-message">Message</label>
+						<i class="fa fa-pencil highlight"></i>
+						<textarea aria-required="true" rows="3" cols="45" name="message" id="footer-message" class="form-control with_icon" placeholder="Message"></textarea>
+					</p>
+								<p class="contact-form-submit topmargin_40">
+						<button type="submit" id="footer_contact_form_submit" name="contact_submit" class="theme_button color1 wide_button">Send</button>
+					</p>
+
+							</form>
+						</div>
+
+						<div class="col-md-4 col-sm-6">
+							<h4 class="widget-titile">Contacts</h4>
+
+							<div class="media small-teaser">
+								<div class="media-left">
+									<i class="rt-icon2-map2 highlight fontsize_24"></i>
+								</div>
+								<div class="media-body">
+									Bishkek, Kyrgyzstan
+								</div>
+							</div>
+
+							<div class="media small-teaser">
+								<div class="media-left">
+									<i class="rt-icon2-device-phone highlight fontsize_24"></i>
+								</div>
+								<div class="media-body">
+									+996 123 456 789
+								</div>
+							</div>
+
+							<div class="media small-teaser">
+								<div class="media-left">
+									<i class="rt-icon2-printer2 highlight fontsize_24"></i>
+								</div>
+								<div class="media-body">
+									+996 123 456 789
+								</div>
+							</div>
+
+							<div class="media small-teaser">
+								<div class="media-left">
+									<i class="rt-icon2-mail2 highlight fontsize_24"></i>
+								</div>
+								<div class="media-body">
+									<a href="mailto:your@mail.com">your@mail.com</a>
+								</div>
+							</div>
+
+							<div class="topmargin_30">
+								<a href="footer7.html#" class="social-icon color-bg-icon soc-facebook"></a><a href="footer7.html#" class="social-icon color-bg-icon soc-twitter"></a><a href="footer7.html#" class="social-icon color-bg-icon soc-google"></a><a href="footer7.html#" class="social-icon color-bg-icon soc-linkedin"></a>
+								<a
+								    href="footer7.html#" class="social-icon color-bg-icon soc-pinterest"></a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</footer>
+
+			<section class="ds ms page_copyright parallax section_padding_15 with_top_border_container">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<p class="small-text grey">&copy; Copyright 2018 All Rights Reserved</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		<!-- eof #box_wrapper -->
+	</div>
+	<!-- eof #canvas -->
+
+	<script src="js/compressed.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/switcher.js"></script>
 
 </body>
+
 </html>
